@@ -11,7 +11,10 @@ import globalErrorHandler from './controllers/error-controller';
 
 const app = express();
 
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(cors());
 
 app.use(express.json());
