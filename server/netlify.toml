@@ -1,4 +1,4 @@
 [[redirects]]
-  from=”api/v1/items” 
-  to=”/.netlify/items” 
+  from="api/v1/items"
+  to="/.netlify/items"
   status=200
