@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useState } from 'react';
 
 function useLocalStorage(key: string, initialValue: unknown) {
@@ -7,9 +6,9 @@ function useLocalStorage(key: string, initialValue: unknown) {
     try {
       const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
-    } catch (err) {
+    } catch (err: any) {
       if (process.env.NODE_ENV === 'development') {
-        console.error(err);
+        throw new Error(err.message);
       }
       return initialValue;
     }
@@ -25,9 +24,9 @@ function useLocalStorage(key: string, initialValue: unknown) {
       setStoredValue(valueToStore);
 
       localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (err) {
+    } catch (err: any) {
       if (process.env.NODE_ENV === 'development') {
-        console.error(err);
+        throw new Error(err.message);
       }
     }
   };

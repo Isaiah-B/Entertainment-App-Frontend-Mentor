@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import {
   itemListState, itemListFilterState, filteredItemState, itemListSearch, userState,
@@ -14,14 +14,17 @@ import Trending from '../trending/trending.component';
 import SearchBar from '../search-bar/search-bar.component';
 import Nav from '../nav/nav.component';
 import BookmarkedList from '../bookmarked-list/bookmarked-list.component';
+import Loader from '../../loader/loader.component';
 
 import { HomeContainer } from './home.styles';
+import useLocalStorageValue from '../../hooks/useLocalStorageValue';
 
 function Home() {
-  const setItemList = useSetRecoilState(itemListState);
+  const [itemList, setItemList] = useRecoilState(itemListState);
   const currentUser = useRecoilValue(userState);
+  const currentUserLocal = useLocalStorageValue('entertainment-user');
 
-  if (!currentUser.id) {
+  if (!currentUserLocal) {
     return <Navigate to="/login" replace />;
   }
 
@@ -64,19 +67,24 @@ function Home() {
   if (!filteredList) return null;
 
   return (
-    <HomeContainer>
-      <SearchBar />
-      <Nav />
+    <>
       {
-        !searchInput && filter === 'home'
-        && <Trending />
+        !itemList && <Loader />
       }
-      {
-        !searchInput && filter === 'bookmarked'
-          ? <BookmarkedList />
-          : <List title={listTitle} items={filteredList} />
-      }
-    </HomeContainer>
+      <HomeContainer>
+        <SearchBar />
+        <Nav />
+        {
+          !searchInput && filter === 'home'
+          && <Trending />
+        }
+        {
+          !searchInput && filter === 'bookmarked'
+            ? <BookmarkedList />
+            : <List title={listTitle} items={filteredList} />
+        }
+      </HomeContainer>
+    </>
   );
 }
 

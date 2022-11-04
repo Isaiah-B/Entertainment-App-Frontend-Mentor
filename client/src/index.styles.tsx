@@ -26,15 +26,17 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
     justify-content: center;
     
+    position: relative;
     height: 100%;
     background-color: hsl(224, 30%, 9%);
     overflow-x: hidden;
   }
-  
+
   .attribution {
-    margin-top: 2rem;
+    position: absolute;
     font-size: 11px;
-    text-align: center; 
+    text-align: center;
+    padding-bottom: 1px;
     width: 100%;
     bottom: 0;
     color: hsl(0, 0%, 90%);

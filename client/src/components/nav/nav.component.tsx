@@ -22,30 +22,42 @@ function Nav() {
       </LogoWrapper>
 
       <NavList>
-        <NavButton
-          selected={filter === 'home'}
-          onClick={() => setFilter('home')}
-        >
-          <NavHomeIcon />
-        </NavButton>
-        <NavButton
-          selected={filter === 'movies'}
-          onClick={() => setFilter('movies')}
-        >
-          <NavMovieIcon />
-        </NavButton>
-        <NavButton
-          selected={filter === 'tv'}
-          onClick={() => setFilter('tv')}
-        >
-          <NavTvIcon />
-        </NavButton>
-        <NavButton
-          selected={filter === 'bookmarked'}
-          onClick={() => setFilter('bookmarked')}
-        >
-          <NavBookmarkIcon />
-        </NavButton>
+        <li>
+          <NavButton
+            selected={filter === 'home'}
+            onClick={() => setFilter('home')}
+            aria-label="home"
+          >
+            <NavHomeIcon />
+          </NavButton>
+        </li>
+        <li>
+          <NavButton
+            selected={filter === 'movies'}
+            onClick={() => setFilter('movies')}
+            aria-label="movies"
+          >
+            <NavMovieIcon />
+          </NavButton>
+        </li>
+        <li>
+          <NavButton
+            selected={filter === 'tv'}
+            onClick={() => setFilter('tv')}
+            aria-label="tv"
+          >
+            <NavTvIcon />
+          </NavButton>
+        </li>
+        <li>
+          <NavButton
+            selected={filter === 'bookmarked'}
+            onClick={() => setFilter('bookmarked')}
+            aria-label="bookmarked movies and shows"
+          >
+            <NavBookmarkIcon />
+          </NavButton>
+        </li>
       </NavList>
 
       <UserAvatarWrapper>
