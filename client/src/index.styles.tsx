@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 
   #root {
     width: 100%;
+    min-height: 100%;
   }
 
   html {
@@ -31,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: hsl(224, 30%, 9%);
     overflow-x: hidden;
   }
-
+  
   .attribution {
     position: absolute;
     font-size: 11px;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
@@ -9,7 +9,6 @@ import useLocalStorageValue from './hooks/useLocalStorageValue';
 import Login from './components/auth/login.component';
 import Signup from './components/auth/signup.component';
 import Home from './components/home/home.component';
-import Loader from './components/loader/loader.component';
 
 function App() {
   const currentUser = useLocalStorageValue('entertainment-user');
