@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npx -package typescript tsc",
+    "build": "npx --package typescript tsc",
     "start": "node dist/server.js",
     "dev": "nodemon",
     "import-data": "ts-node src/dev/import-delete-data.ts --import",
@@ -24,8 +24,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.7",
-    "typescript": "^4.8.4"
+    "mongoose": "^6.6.7"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
