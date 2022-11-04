@@ -1,7 +1,7 @@
 
 # Entertainment App
 
-![]()
+![](./screenshot.png)
 
 
 ## Challenge
@@ -19,7 +19,7 @@ Users should be able to:
 ### Links
 
 - [Solution]()
-- [Live Site]()
+- [Live Site](https://fm-entertainment.netlify.app/)
 
 ### Built with
 
