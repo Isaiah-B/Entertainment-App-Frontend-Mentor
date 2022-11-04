@@ -18,7 +18,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution]()
+- [Solution](https://www.frontendmentor.io/solutions/fullstack-entertainment-app-using-react-and-nodejs-EbUTJuQkXY)
 - [Live Site](https://fm-entertainment.netlify.app/)
 
 ### Built with
