@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useState } from 'react';
 
 function useLocalStorage(key: string, initialValue: unknown) {
