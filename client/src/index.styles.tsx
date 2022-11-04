@@ -30,6 +30,19 @@ export const GlobalStyles = createGlobalStyle`
     background-color: hsl(224, 30%, 9%);
     overflow-x: hidden;
   }
+  
+  .attribution {
+    margin-top: 2rem;
+    font-size: 11px;
+    text-align: center; 
+    width: 100%;
+    bottom: 0;
+    color: hsl(0, 0%, 90%);
+
+    a {
+      color: hsl(228, 45%, 44%); 
+    }
+  }
 `;
 
 const MEDIA_SIZES = {

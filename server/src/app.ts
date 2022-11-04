@@ -19,6 +19,7 @@ app.use(cors());
 
 app.use(express.json());
 
+app.get('/', (req, res) => (res.send('API index :)')));
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/items', itemRouter);
 app.use('/api/v1/users', userRouter);

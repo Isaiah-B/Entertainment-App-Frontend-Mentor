@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000/api/v1/users';
+let baseUrl: string;
+
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:8000/api/v1/users';
+} else if (process.env.NODE_ENV === 'production') {
+  baseUrl = 'https://fm-entertainment-server.onrender.com/api/v1/users';
+}
 
 export const getUser = async (userId: string) => {
   const res = await axios.get(`${baseUrl}/${userId}`);
