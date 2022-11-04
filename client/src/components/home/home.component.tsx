@@ -14,35 +14,16 @@ import Trending from '../trending/trending.component';
 import SearchBar from '../search-bar/search-bar.component';
 import Nav from '../nav/nav.component';
 import BookmarkedList from '../bookmarked-list/bookmarked-list.component';
-import Loader from '../../loader/loader.component';
+import Loader from '../loader/loader.component';
 
 import { HomeContainer } from './home.styles';
 import useLocalStorageValue from '../../hooks/useLocalStorageValue';
 
 function Home() {
+  const [isLoading, setIsLoading] = useState(false);
   const [itemList, setItemList] = useRecoilState(itemListState);
   const currentUser = useRecoilValue(userState);
   const currentUserLocal = useLocalStorageValue('entertainment-user');
-
-  if (!currentUserLocal) {
-    return <Navigate to="/login" replace />;
-  }
-
-  useEffect(() => {
-    const getItems = async () => {
-      const res = await getAllItems();
-
-      const items = res.data.map((item: Item) => {
-        if (currentUser.bookmarked && currentUser.bookmarked.includes(item._id)) {
-          return { ...item, isBookmarked: true };
-        }
-        return item;
-      });
-      setItemList(items);
-    };
-
-    getItems();
-  }, [currentUser]);
 
   const filteredList = useRecoilValue(filteredItemState);
   const searchInput = useRecoilValue(itemListSearch);
@@ -64,12 +45,40 @@ function Home() {
     ? `Found ${filteredList.length} results for '${searchInput}'`
     : listTitleMap[filter as keyof ITitleMap];
 
+  if (!currentUserLocal) {
+    return <Navigate to="/login" replace />;
+  }
+
   if (!filteredList) return null;
+
+  useEffect(() => {
+    const getItems = async () => {
+      let items: Item[] = [];
+
+      if (itemList.length === 0) {
+        setIsLoading(true);
+      }
+
+      const res = await getAllItems();
+
+      items = res.data.map((item: Item) => {
+        if (currentUser.bookmarked && currentUser.bookmarked.includes(item._id)) {
+          return { ...item, isBookmarked: true };
+        }
+        return item;
+      });
+      setItemList(items);
+      setIsLoading(false);
+    };
+
+    getItems();
+  }, [currentUser]);
 
   return (
     <>
       {
-        !itemList && <Loader />
+        isLoading
+        && <Loader />
       }
       <HomeContainer>
         <SearchBar />

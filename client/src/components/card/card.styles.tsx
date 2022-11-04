@@ -93,11 +93,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-interface Props {
-  imageFolder: string,
-}
-
-export const CardImageWrapper = styled.div<Props>`
+export const CardImageWrapper = styled.div`
   height: 17.2rem;
   border-radius: 8px;
   overflow: hidden;
@@ -154,7 +150,7 @@ export const PlayButton = styled.button`
 `;
 
 export const CardImage = styled.picture`
-  img, source {
+  img {
     height: 100%;
     width: 100%;
   }

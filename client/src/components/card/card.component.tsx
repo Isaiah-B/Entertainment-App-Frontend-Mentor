@@ -48,7 +48,7 @@ function Card({ item, cardSize = 'small' }: CardProps) {
 
   return (
     <CardContainer className={cardSize === 'large' ? 'cardLarge' : ''}>
-      <CardImageWrapper imageFolder={title.toLowerCase().split(' ').join('-')}>
+      <CardImageWrapper>
         <BookmarkButton onClick={handleBookmarkItem} aria-label="add to bookmarks">
           {
             isBookmarked

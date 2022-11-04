@@ -9,7 +9,7 @@ import useLocalStorageValue from './hooks/useLocalStorageValue';
 import Login from './components/auth/login.component';
 import Signup from './components/auth/signup.component';
 import Home from './components/home/home.component';
-import Loader from './loader/loader.component';
+import Loader from './components/loader/loader.component';
 
 function App() {
   const currentUser = useLocalStorageValue('entertainment-user');
