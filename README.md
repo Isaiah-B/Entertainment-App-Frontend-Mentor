@@ -24,6 +24,7 @@ Users should be able to:
 ### Built with
 
 - React Typescript
+- [Recoil](https://recoiljs.org/)
 - NodeJS
 - Express
 - CSS Styled Components
