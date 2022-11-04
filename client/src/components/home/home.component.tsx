@@ -21,7 +21,7 @@ function Home() {
   const setItemList = useSetRecoilState(itemListState);
   const currentUser = useRecoilValue(userState);
 
-  if (!currentUser) {
+  if (!currentUser.id) {
     return <Navigate to="/login" replace />;
   }
 
