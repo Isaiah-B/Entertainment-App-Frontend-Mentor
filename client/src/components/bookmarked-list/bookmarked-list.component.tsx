@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import { bookmarkedItems } from '../../store';
-import List from '../list/list.component';
 import { BookmarkedListContainer } from './bookmarked-list.styles';
+import List from '../list/list.component';
 
 function BookmarkedList() {
   const bookmarkedMoviesList = useRecoilValue(bookmarkedItems).movies;
