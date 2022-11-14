@@ -16,3 +16,5 @@
 .prettierignore
 
 *.txt
+
+docker-compose-dev.yml

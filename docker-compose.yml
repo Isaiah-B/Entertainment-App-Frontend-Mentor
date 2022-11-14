@@ -1,0 +1,19 @@
+version: '3'
+services:
+  client:
+    image: "zabel339/entertainment-client"
+    mem-limit: 128m
+    hostname: client
+  api:
+    image: "zabel339/entertainment-api"
+    mem-limit: 128m
+    hostname: api
+    environment:
+      - DATABASE_URI=$DATABASE_URI
+      - PORT=$PORT
+  nginx:
+    image: "zabel339/entertainment-nginx"
+    mem-limit: 128m
+    hostname: nginx
+    ports:
+      - "80:80"

@@ -1,0 +1,24 @@
+name: Deploy MultiDocker
+on:
+  push:
+    branches:
+      - docker
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker build -t zabel339/react-test -f ./client/Dockerfile.dev ./client
+ 
+      - run: docker build -t zabel339/entertainment-client ./client
+      - run: docker build -t zabel339/entertainment-nginx ./nginx
+      - run: docker build -t zabel339/entertainment-server ./server
+ 
+      - run: docker push zabel339/entertainment-client
+      - run: docker push zabel339/entertainment-nginx
+      - run: docker push zabel339/entertainment-server
+ 
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
