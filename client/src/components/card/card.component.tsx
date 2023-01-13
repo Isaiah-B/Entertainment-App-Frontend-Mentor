@@ -65,18 +65,24 @@ function Card({ item, cardSize = 'small' }: CardProps) {
         {
           cardSize === 'large'
             ? (
-              <CardImage>
-                <source media="(max-width: 29em)" srcSet={thumbnail.trending?.small} />
-                <img src={thumbnail.trending?.large} alt={title} />
-              </CardImage>
+              <CardImage
+                srcSet={`${thumbnail.trending?.small} 480w, ${thumbnail.trending?.large} 940w`}
+                sizes="(max-width: 464px) 480px,
+                940px"
+                src={thumbnail.trending?.large}
+                alt={title}
+              />
             )
 
             : (
-              <CardImage>
-                <source media="(max-width: 33em)" srcSet={thumbnail.regular.medium} />
-                <source media="(max-width: 29em)" srcSet={thumbnail.regular.small} />
-                <img src={thumbnail.regular.large} alt={title} />
-              </CardImage>
+              <CardImage
+                srcSet={`${thumbnail.regular.small} 328w, ${thumbnail.regular.medium} 440w, ${thumbnail.regular.large} 560w`}
+                sizes="(max-width: 464px) 328px,
+                (max-width: 768px) 440px,
+                560px"
+                src={thumbnail.regular.large}
+                alt={title}
+              />
             )
         }
 

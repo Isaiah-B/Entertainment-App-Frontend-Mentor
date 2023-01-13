@@ -15,7 +15,7 @@ export const ListTitle = styled.h1`
 
 export const ListContents = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(29rem, 1fr));
   grid-row-gap: 3.8rem;
 
   @media ${devices.laptop} {

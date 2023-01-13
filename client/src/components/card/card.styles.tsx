@@ -149,11 +149,9 @@ export const PlayButton = styled.button`
   }
 `;
 
-export const CardImage = styled.picture`
-  img {
-    height: 100%;
-    width: 100%;
-  }
+export const CardImage = styled.img`
+  height: 100%;
+  width: 100%;
 `;
 
 export const DetailsWrapper = styled.div`

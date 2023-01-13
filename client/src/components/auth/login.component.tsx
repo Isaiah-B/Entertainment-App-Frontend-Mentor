@@ -19,6 +19,7 @@ import {
   TextInputWrapper,
   InputError,
 } from './auth.styles';
+import Loader from '../loader/loader.component';
 
 function Login() {
   const [emailInput, setEmailInput] = useState<string>('');
@@ -29,6 +30,7 @@ function Login() {
 
   const [error, setError] = useState('');
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const displayError = (message: string) => {
     const processedMessage = message.split('.').join('\n');
@@ -46,6 +48,7 @@ function Login() {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const userRes = await login({ email: emailInput, password: passwordInput });
 
       const { id, email, bookmarked } = userRes.data;
@@ -54,6 +57,7 @@ function Login() {
 
       setCurrentUser(userFields);
       setUser(id);
+      setLoading(false);
     } catch (err: any) {
       displayError(err.response.data.message);
     }
@@ -61,6 +65,10 @@ function Login() {
 
   if (user) {
     return <Navigate to="/" replace />;
+  }
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (

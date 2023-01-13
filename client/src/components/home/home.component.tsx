@@ -74,26 +74,24 @@ function Home() {
     getItems();
   }, [currentUser]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <>
+    <HomeContainer>
+      <SearchBar />
+      <Nav />
       {
-        isLoading
-        && <Loader />
-      }
-      <HomeContainer>
-        <SearchBar />
-        <Nav />
-        {
           !searchInput && filter === 'home'
           && <Trending />
         }
-        {
+      {
           !searchInput && filter === 'bookmarked'
             ? <BookmarkedList />
             : <List title={listTitle} items={filteredList} />
         }
-      </HomeContainer>
-    </>
+    </HomeContainer>
   );
 }
 

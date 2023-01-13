@@ -19,11 +19,13 @@ import {
   InputError,
   TextInputWrapper,
 } from './auth.styles';
+import Loader from '../loader/loader.component';
 
 function Signup() {
   const [emailInput, setEmailInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
   const [passwordConfirmInput, setPasswordConfirmInput] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const setCurrentUser = useSetRecoilState(userState);
   const [user, setUser] = useLocalStorage('entertainment-user', '');
@@ -47,6 +49,7 @@ function Signup() {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const userRes = await createUser({
         email: emailInput,
         password: passwordInput,
@@ -59,6 +62,7 @@ function Signup() {
 
       setCurrentUser(userFields);
       setUser(id);
+      setIsLoading(false);
     } catch (err: any) {
       displayError(err.response.data.message);
     }
@@ -66,6 +70,10 @@ function Signup() {
 
   if (user) {
     return <Navigate to="/" replace />;
+  }
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
